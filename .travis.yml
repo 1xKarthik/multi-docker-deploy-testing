@@ -3,7 +3,6 @@ services:
   - docker
 
 before_install:
-  - yes | sudo gem install rake
   - docker build -t karthikgirraj/resume-app -f app.Dockerfile .
   - docker build -t karthikgirraj/resume-db -f db.Dockerfile .
   - docker build -t karthikgirraj/resume-webserver -f webserver.Dockerfile .
