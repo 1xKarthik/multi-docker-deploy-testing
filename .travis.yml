@@ -2,12 +2,10 @@ sudo: required
 services:
   - docker
 
-before_install:
+script:
   - docker build -t karthikgirraj/resume-app -f app.Dockerfile .
   - docker build -t karthikgirraj/resume-db -f db.Dockerfile .
   - docker build -t karthikgirraj/resume-webserver -f webserver.Dockerfile .
-
-after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push karthikgirraj/resume-app
   - docker push karthikgirraj/resume-db
