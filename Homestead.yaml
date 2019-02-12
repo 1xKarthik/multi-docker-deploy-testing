@@ -1,0 +1,19 @@
+ip: 192.168.10.10
+memory: 1024
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: 'C:\Users\Karthik\Documents\Github\resume-crudbooster'
+        to: /home/vagrant/code
+sites:
+    -
+        map: resume.test
+        to: /home/vagrant/code/public
+databases:
+    - resume_crudbooster
+name: resume-crudbooster
+hostname: resume-crudbooster

@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion": "2",
+    "containerDefinitions": [
+        {
+            "name": "app",
+            "image": "karthikgirraj/resume-app",
+            "hostname": "app",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "db",
+            "image": "karthikgirraj/resume-db",
+            "hostname": "db",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "webserver",
+            "image": "karthikgirraj/resume-webserver",
+            "hostname": "webserver",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["app", "db"]
+        }
+    ]
+}
