@@ -3,22 +3,22 @@
     "containerDefinitions": [
         {
             "name": "app",
-            "image": "karthikgirraj/resume-app",
+            "image": "karthikgirraj/resume-aws-app:v3",
             "hostname": "app",
             "essential": false,
             "memory": 128
         },
         {
             "name": "db",
-            "image": "karthikgirraj/resume-db",
+            "image": "karthikgirraj/resume-aws-db:v2",
             "hostname": "db",
             "essential": false,
             "memory": 128
         },
         {
-            "name": "webserver",
-            "image": "karthikgirraj/resume-webserver",
-            "hostname": "webserver",
+            "name": "server",
+            "image": "karthikgirraj/resume-aws-server",
+            "hostname": "server",
             "essential": true,
             "memory": 128,
             "portMappings": [

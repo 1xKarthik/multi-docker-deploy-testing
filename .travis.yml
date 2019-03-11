@@ -13,13 +13,13 @@ script:
 
 deploy:
   provider: elasticbeanstalk
-  region: ap-south-1
-  app: resume-docker
-  env: ResumeDocker-env
-  bucket_name: elasticbeanstalk-ap-south-1-577683050298
-  bucker_path: resume-docker
+  region: "ap-south-1"
+  app: "resume-docker"
+  env: "ResumeDocker-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-577683050298"
+  bucker_path: "resume-docker"
   on:
     branch: master
-  access_key_id: $AWS_ACCESS_KEY
+  access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key:
-    secure: $AWS_SECRET_KEY
+    secure: "$AWS_SECRET_KEY"

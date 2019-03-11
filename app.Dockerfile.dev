@@ -1,3 +1,8 @@
+FROM composer as builder
+WORKDIR /app
+COPY . .
+RUN composer install --ignore-platform-reqs --no-scripts
+
 FROM php:7.3.2-fpm
 
 # Set working directory
@@ -30,15 +35,10 @@ RUN docker-php-ext-install gd
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Copy composer.lock and composer.json
-COPY composer.lock composer.json ./
-COPY database /var/www/database
-
-# Install project dependencies
-RUN composer install --ignore-platform-reqs --no-scripts
-
 # Copy existing application directory contents
-COPY . /var/www
+COPY --from=builder /app /var/www
+
+COPY ./php/local.ini /usr/local/etc/php/conf.d/local.ini
    
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
